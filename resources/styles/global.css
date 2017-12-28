@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
+
+html, body {
+    margin: 0;
+}
+
+body {
+    background-color: #dfe3e4;
+    font-family: Ubuntu, serif;
+    min-height: 100%;
+    color: var(--light);
+    max-width: 1000px;
+    margin: auto;
+    --light: #eeeeee;
+    --dark: #2C3E50;
+    --primary: #2ecc71;
+    --primary-dark: #2db860;
+    --secondary: #16a085;
+    --secondary-dark: #16957a;
+    --accent: #ff4739;
+    --accent-dark: #eb4338;
+    --accent-secondary: #d32f4d;
+    --accent-secondary-dark: #bf304b;
+}
+
+.main-container {
+    position: relative;
+    z-index: 1;
+    background: var(--light);
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(44, 62, 80, 0.1),
+        0 5px 5px 0 rgba(44, 62, 80, 0.1);
+    color: var(--dark);
+}
+
+button {
+    text-transform: uppercase;
+    outline: 0;
+    border: 0;
+    color: var(--light);
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 400;
+    font-family: Ubuntu, serif;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+hr {
+    border-top: 1px solid var(--dark);
+    opacity: 0.2;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.green-button {
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    padding: 15px 30px;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--secondary);
+    margin: auto;
+    display: block;
+    width: 87%;
+}
+
+.green-button:hover,
+.green-button:active,
+.green-button:focus {
+    background: linear-gradient(-89deg, var(--primary-dark), var(--secondary-dark));
+    border-bottom-color: var(--secondary-dark);
+}

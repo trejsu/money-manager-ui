@@ -1,0 +1,45 @@
+#menu a {
+    color: var(--dark);
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu #title {
+    color: var(--light);
+    font-weight: 700;
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    margin: -20px;
+    padding: 20px;
+}
+
+#menu img {
+    width: 30px;
+    margin-right: 20%;
+}
+
+#menu li {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+#menu li:hover,
+#menu .selected {
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    cursor: pointer;
+}
+
+#menu .selected a {
+    color: var(--dark);
+}

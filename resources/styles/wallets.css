@@ -1,0 +1,68 @@
+#wallet {
+    padding: 10px;
+}
+
+#menu button {
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--secondary);
+    display: block;
+    width: 100%;
+    margin: 10px auto auto;
+}
+
+#add-wallet-popup {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#add-wallet {
+    width: 400px;
+    height: 300px;
+    margin: 100px auto;
+    position: relative;
+}
+
+#add-wallet > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(-89deg, var(--accent), var(--accent-secondary));
+    border-radius: 5px;
+    border-bottom: 3px solid var(--accent-secondary);
+    margin: 5px;
+}
+
+#add-wallet > button:hover,
+#add-wallet > button:active,
+#add-wallet > button:focus {
+    background: linear-gradient(-89deg, var(--accent-dark), var(--accent-secondary-dark));
+    border-bottom-color: var(--accent-secondary-dark);
+}
+
+#wallet {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+    #wallet #amount {
+        float: none;
+        margin: auto;
+    }
+
+    #wallet #name {
+        margin: auto;
+    }
+}
+
+#add-wallet #add-form {
+    top: 60px;
+}

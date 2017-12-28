@@ -1,0 +1,11 @@
+.tick {
+    width: 15px;
+}
+
+table {
+    margin-top: 20px;
+}
+
+.editable-tick {
+    cursor: pointer;
+}

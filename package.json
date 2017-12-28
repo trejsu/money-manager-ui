@@ -1,0 +1,34 @@
+{
+  "name": "money-manager-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/webpack-dev-server --port 8081 --hot --inline --history-api-fallback"
+  },
+  "author": "Martyna",
+  "license": "ISC",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-async-loader": "^0.1.2",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.5.4",
+    "react-progressbar": "^1.4.6",
+    "react-router": "^3.0.0",
+    "react-waypoint": "^7.0.0"
+  }
+}

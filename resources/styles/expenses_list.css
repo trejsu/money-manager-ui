@@ -1,0 +1,110 @@
+#tabs {
+    padding: 0;
+    border-bottom: 5px solid var(--secondary);
+}
+
+#tabs ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#tabs li {
+    float: left;
+    padding: 15px;
+}
+
+#tabs li.selected,
+#tabs li:hover {
+    color: var(--dark);
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    cursor: pointer;
+}
+
+#tabs .horizontal-list {
+    display: table;
+    margin: 0 auto;
+}
+
+#expenses-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#grid {
+    width: 100%;
+    padding: 0;
+}
+
+.col {
+    padding: 5px;
+}
+
+.date {
+    padding: 10px;
+    margin: -20px -20px 20px;
+}
+
+.date#inflow {
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+}
+
+.date#outflow {
+    background: linear-gradient(-89deg, var(--accent), var(--accent-secondary));
+}
+
+.date #day {
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.date #moment {
+    opacity: 0.5;
+}
+
+#amount {
+    float: right;
+}
+
+#inflow #amount {
+    color: var(--primary);
+}
+
+#outflow #amount {
+    color: var(--accent)
+}
+
+#sum #amount {
+    font-weight: 500;
+}
+
+#summary hr {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+#message {
+    opacity: 0.5;
+}
+
+#category-name {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#waypoint {
+    text-align: center;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+#expenses-list img {
+    width: 100%;
+}
+
+#expenses-list button:disabled {
+    opacity: 0.5;
+}

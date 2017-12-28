@@ -1,0 +1,124 @@
+#form {
+    max-width: 441px;
+    margin: 150px auto 20px;
+    padding: 45px;
+    text-align: center;
+}
+
+#form button {
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    padding: 15px 30px;
+    width: 100%;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--secondary);
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+#form button:hover,
+#form button:active,
+#form button:focus {
+    background: linear-gradient(-89deg, var(--primary-dark), var(--secondary-dark));
+    border-bottom-color: var(--secondary-dark);
+}
+
+#form button.google {
+    background: #2171f2;
+    border-bottom: 3px solid #1f6dde;
+}
+
+#form button.google:hover,
+#form button.google:active,
+#form button.google:focus {
+    background: #2065c9;
+    border-bottom-color: #1b58b4;
+}
+
+#form button.facebook {
+    background: #3b5998;
+    border-bottom: 3px solid #3C4484;
+}
+
+#form button.facebook:hover,
+#form button.facebook:active,
+#form button.facebook:focus {
+    background: #3C4484;
+    border-bottom-color: #37376F;
+}
+
+#form img {
+    max-width: 100px;
+}
+
+#form > #title {
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.credit {
+    text-align: center;
+    max-width: 360px;
+    margin: auto;
+    font-weight: 300;
+    color: var(--dark)
+}
+
+.credit a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.separator {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 0;
+    border-top: 1px solid var(--dark);
+    border-bottom: 1px solid var(--light);
+    position: relative;
+    opacity: 0.5;
+}
+
+.middle-separator {
+    top: -9px;
+    left: 41%;
+    position: absolute;
+    padding: 0 16px;
+    color: var(--dark);
+    background: var(--light);
+    font-size: 11px;
+    text-shadow: 0 1px 0 white;
+    text-transform: uppercase;
+}
+
+#form input {
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: normal;
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+}
+
+#form a {
+    color: var(--secondary-dark);
+}
+
+#form a:hover,
+#form a:focus,
+#form a:active {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.register {
+    margin-top: 20px;
+}
+
+#form .unauthorized {
+    color: var(--accent-dark);
+    margin-bottom: 30px;
+}

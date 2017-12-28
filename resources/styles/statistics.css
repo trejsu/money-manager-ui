@@ -1,0 +1,29 @@
+.statistics-expense img {
+    width: 100%;
+}
+
+.statistics-expense #amount {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+#statistics .title {
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+#categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category-col {
+    padding: 0;
+}
+
+#categories #amount {
+    color: var(--accent);
+    font-weight: 600;
+    float: none;
+}

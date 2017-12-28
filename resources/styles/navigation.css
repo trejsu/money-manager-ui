@@ -1,0 +1,24 @@
+#navigation button {
+    background: linear-gradient(-89deg, var(--accent), var(--accent-secondary));
+    padding: 15px 30px;
+    float: right;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--accent-secondary);
+}
+
+#navigation button:hover,
+#navigation button:active,
+#navigation button:focus {
+    background: linear-gradient(-89deg, var(--accent-dark), var(--accent-secondary-dark));
+    border-bottom-color: var(--accent-secondary-dark);
+}
+
+#navigation #greeting {
+    color: var(--dark);
+    line-height: 52px;
+    font-size: 20px;
+}
+
+#navigation img {
+    width: 52px;
+}

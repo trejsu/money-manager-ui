@@ -1,0 +1,104 @@
+#add-expense-popup {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#add-expense {
+    width: 400px;
+    height: 450px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.x-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(-89deg, var(--accent), var(--accent-secondary));
+    border-radius: 5px;
+    border-bottom: 3px solid var(--accent-secondary);
+    margin: 5px;
+}
+
+.x-button:hover,
+.x-button:active,
+.x-button:focus {
+    background: linear-gradient(-89deg, var(--accent-dark), var(--accent-secondary-dark));
+    border-bottom-color: var(--accent-secondary-dark);
+}
+
+.hidden {
+    display: none;
+}
+
+#add-form {
+    text-align: center;
+    position: absolute;
+    top: 125px;
+    left: 50px;
+    width: 300px;
+}
+
+#add-form input {
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: normal;
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+}
+
+#add-form input[type=radio] {
+    width: 20px;
+    margin: 10px;
+}
+
+#add-form select {
+    background: #ffffff;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: normal;
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+}
+
+#add-form button {
+    background: linear-gradient(-89deg, var(--primary), var(--secondary));
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--secondary);
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+}
+
+#add-form button:disabled {
+    opacity: 0.5;
+}
+
+#add-form button:hover:enabled,
+#add-form button:active:enabled,
+#add-form button:focus:enabled {
+    background: linear-gradient(-89deg, var(--primary-dark), var(--secondary-dark));
+    border-bottom-color: var(--secondary-dark);
+}
+
+#add-form #radio {
+    display: inline;
+}
+
+#add-expense .green-button {
+    padding: 10px 20px;
+    width: 300px;
+    margin-top: 34px;
+}

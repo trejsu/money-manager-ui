@@ -1,0 +1,6 @@
+
+/node_modules/
+/.idea/
+/money-manager-ui.iml
+/dist/
+/bundle.js

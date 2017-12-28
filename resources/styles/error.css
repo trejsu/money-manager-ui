@@ -1,0 +1,37 @@
+#error {
+    max-width: 360px;
+    margin: 150px auto 20px;
+    padding: 45px;
+    text-align: center;
+}
+
+#code {
+    font-weight: 900;
+    font-size: 50px;
+}
+
+#error-message {
+    font-weight: 100;
+}
+
+#error button {
+    background: linear-gradient(-89deg, var(--accent), var(--accent-secondary));
+    padding: 15px 30px;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--accent-secondary);
+}
+
+#error button:hover,
+#error button:active,
+#error button:focus {
+    background: linear-gradient(-89deg, var(--accent-dark), var(--accent-secondary-dark));
+    border-bottom-color: var(--accent-secondary-dark);
+}
+
+#error img {
+    max-width: 100px;
+    margin: 20px;
+}
+
