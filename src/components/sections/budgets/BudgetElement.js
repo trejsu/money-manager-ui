@@ -42,13 +42,13 @@ export default class BudgetElement extends React.Component {
 
   get period() {
     Moment.locale("pl");
-    return Moment(this.props.budget.start).format("DD MMM")
+    return Moment(this.props.budget.timePeriod.start).format("DD MMM")
       + " - "
-      + Moment(this.props.budget.end).format("DD MMM");
+      + Moment(this.props.budget.timePeriod.end).format("DD MMM");
   }
 
   get daysLeft() {
-    return Moment(this.props.budget.end, "YYYY-MM-DD").fromNow();
+    return Moment(this.props.budget.timePeriod.end, "YYYY-MM-DD").fromNow();
   }
 
   get amountLeft() {
