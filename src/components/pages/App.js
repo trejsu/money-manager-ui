@@ -131,6 +131,7 @@ export default class App extends React.Component {
           walletID: this.state.walletID,
           addExpenseHidden: this.state.addExpenseHidden,
           addWalletHidden: this.state.addWalletHidden,
+          addBudgetHidden: this.state.addBudgetHidden,
           login: this.state.user.login
         }));
   }
