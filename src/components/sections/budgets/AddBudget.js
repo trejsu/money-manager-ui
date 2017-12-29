@@ -5,7 +5,7 @@ import Button from "../../elements/buttons/Button";
 import AddBudgetForm from "./AddBudgetForm";
 import Server from "../../../services/Server";
 
-export default class AddWallet extends React.Component {
+export default class AddBudget extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -25,8 +25,10 @@ export default class AddWallet extends React.Component {
         profit: false
       },
       total: form.amount.value,
-      start: form.start.value,
-      end: form.end.value
+      timePeriod: {
+        start: form.start.value,
+        end: form.end.value
+      }
     };
   }
 
