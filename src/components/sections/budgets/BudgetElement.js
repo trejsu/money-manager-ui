@@ -24,7 +24,7 @@ export default class BudgetElement extends React.Component {
   }
 
   get iconPath() {
-    return "./icons/categories/"
+    return "./resources/icons/categories/"
       + this.props.budget.category.name.replace(new RegExp(" ", "g"), "_")
       + ".svg";
   }

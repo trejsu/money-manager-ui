@@ -68,7 +68,7 @@ export default class AdminPanel extends React.Component {
           <p id = "title">
             PANEL ADMINA
           </p>
-          <img src = "./icons/people.svg" />
+          <img src = "./resources/icons/people.svg" />
           <Table
             cols = {this.cols}
             rows = {this.rows} />

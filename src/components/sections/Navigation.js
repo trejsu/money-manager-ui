@@ -36,7 +36,7 @@ class Navigation extends React.Component {
         id = "navigation">
         <Row>
           <Col xs = {2} sm = {1} md = {1} lg = {1}>
-            <img src = "./icons/user_filled.svg" />
+            <img src = "./resources/icons/user_filled.svg" />
           </Col>
           <Col xs = {10} sm = {6} md = {6} lg = {6}>
             <Greeting user = {this.props.name} />

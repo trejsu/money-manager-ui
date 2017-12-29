@@ -8,7 +8,7 @@ export default class StatisticsExpenseElement extends React.Component {
   }
 
   get iconPath() {
-    return "./icons/categories/"
+    return "./resources/icons/categories/"
       + this.props.expense.category.name.replace(new RegExp(" ", "g"), "_")
       + ".svg";
   }

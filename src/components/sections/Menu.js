@@ -31,27 +31,27 @@ export default class Menu extends React.Component {
     elements.push({
       name: "wydatki",
       route: "/expenses",
-      image: "./icons/menu/price_tag.svg"
+      image: "./resources/icons/menu/price_tag.svg"
     });
     elements.push({
       name: "statystyki",
       route: "/statistics",
-      image: "./icons/menu/pie_chart.svg"
+      image: "./resources/icons/menu/pie_chart.svg"
     });
     elements.push({
       name: "budżety",
       route: "/budgets",
-      image: "./icons/menu/calculator.svg"
+      image: "./resources/icons/menu/calculator.svg"
     });
     elements.push({
       name: "oszczędności",
       route: "/savings",
-      image: "./icons/menu/money.svg"
+      image: "./resources/icons/menu/money.svg"
     });
     elements.push({
       name: "ustawienia",
       route: "/settings",
-      image: "./icons/menu/settings.svg"
+      image: "./resources/icons/menu/settings.svg"
     });
     return elements;
   }

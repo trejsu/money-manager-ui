@@ -126,7 +126,7 @@ class Register extends React.Component {
           <p id = "title">
             MONEY MANAGER
           </p>
-          <img src = "./icons/coins.svg" />
+          <img src = "./resources/icons/coins.svg" />
           <Button
             class = "google"
             title = "zarejestruj się przez konto google"

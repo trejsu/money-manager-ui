@@ -15,7 +15,7 @@ export default class Error extends React.Component {
           <div id = "code">
             {this.props.code}
           </div>
-          <img src = {"./icons/error/" + this.props.code + ".svg"} />
+          <img src = {"./resources/icons/error/" + this.props.code + ".svg"} />
           <div id = "error-message">
             {this.props.message}
           </div>
