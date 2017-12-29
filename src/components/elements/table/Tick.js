@@ -8,7 +8,7 @@ export default class Tick extends React.Component {
   render() {
     return (
       <img
-        src = "./icons/checked.svg"
+        src = "./resources/icons/checked.svg"
         className = "tick" />
     );
   }
