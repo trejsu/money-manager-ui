@@ -60,7 +60,7 @@ export default class ExpensesList extends React.Component {
   updateState(getExpenses) {
     getExpenses()
       .then(response => {
-        const sortByDate = R.sortWith([R.descend(R.prop('date'))]);
+        const sortByDate = R.sortWith([R.descend(R.prop('id'))]);
         const sorted = sortByDate(response.data);
         this.setState({
           elements: sorted,
