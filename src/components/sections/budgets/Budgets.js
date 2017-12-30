@@ -1,5 +1,6 @@
 import React from "react";
 import {browserHistory} from "react-router";
+const R = require('ramda');
 
 import BudgetElement from "./BudgetElement";
 import Button from "../../elements/buttons/Button";
@@ -9,6 +10,9 @@ import DateGenerator from "../../../util/DateGenerator";
 import ContinuousScrollingList from "../../elements/ContinuousScrollingList";
 
 export default class Budgets extends React.Component {
+
+  static get ELEMENTS_TO_LOAD() { return 3; }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -43,10 +47,14 @@ export default class Budgets extends React.Component {
       let period = this.dateGenerator.getDateForBudgetTabs(this.state.selectedTab);
       new Server(props.login)
         .getBudgetsForTimePeriod(period)
-        .then(response => this.setState({
-          budgets: response.data,
-          items: response.data.slice(0, 3)
-        }))
+        .then(response => {
+          const sortById = R.sortWith([R.descend(R.prop('id'))]);
+          const sorted = sortById(response.data);
+          this.setState({
+            budgets: sorted,
+            items: sorted.slice(0, Budgets.ELEMENTS_TO_LOAD)
+          })
+        })
         .catch(error => {
           console.log(error);
           if (error.response.status === 500) {
