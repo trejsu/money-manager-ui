@@ -1,5 +1,6 @@
 import React from "react";
 import {browserHistory} from "react-router";
+const R = require('ramda');
 
 import Server from "../../../services/Server";
 import Button from "../../elements/buttons/Button";
@@ -8,6 +9,9 @@ import ContinuousScrollingList from "../../elements/ContinuousScrollingList";
 import DateGenerator from "../../../util/DateGenerator";
 
 export default class ExpensesList extends React.Component {
+
+  static get ELEMENTS_TO_LOAD() { return 3; }
+
   constructor(props) {
     super(props);
     this.dateGenerator = new DateGenerator();
@@ -56,9 +60,11 @@ export default class ExpensesList extends React.Component {
   updateState(getExpenses) {
     getExpenses()
       .then(response => {
+        const sortByDate = R.sortWith([R.descend(R.prop('date'))]);
+        const sorted = sortByDate(response.data);
         this.setState({
-          elements: response.data,
-          items: response.data.slice(0, 3)
+          elements: sorted,
+          items: sorted.slice(0, ExpensesList.ELEMENTS_TO_LOAD)
         });
       })
       .catch(error => {

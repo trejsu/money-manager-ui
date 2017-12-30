@@ -23,6 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "moment": "^2.18.1",
     "prop-types": "^15.5.8",
+    "ramda": "^0.25.0",
     "react": "^15.5.4",
     "react-async-loader": "^0.1.2",
     "react-bootstrap": "^0.31.0",
