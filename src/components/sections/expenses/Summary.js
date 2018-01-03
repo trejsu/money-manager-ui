@@ -39,8 +39,8 @@ export default class Summary extends React.Component {
   updateState(getSummary) {
     getSummary()
       .then(response => this.setState({
-        inflow: response.data.inflow,
-        outflow: response.data.outflow
+        inflow: response.data.inflow.amount,
+        outflow: response.data.outflow.amount
       }))
       .catch(error => {
         if (error.response.status === 500) {
