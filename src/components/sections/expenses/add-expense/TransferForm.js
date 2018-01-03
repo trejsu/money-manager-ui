@@ -1,12 +1,12 @@
 import React from "react";
 import {browserHistory} from "react-router";
 
-import Server from "../../../services/Server";
-import NumberInput from "../../elements/inputs/NumberInput";
-import Radio from "../../elements/inputs/Radio";
-import Select from "../../elements/inputs/Select";
-import Text from "../../elements/inputs/Text";
-import SubmitButton from "../../elements/buttons/SubmitButton";
+import Server from "../../../../services/Server";
+import NumberInput from "../../../elements/inputs/NumberInput";
+import Radio from "../../../elements/inputs/Radio";
+import Select from "../../../elements/inputs/Select";
+import Text from "../../../elements/inputs/Text";
+import SubmitButton from "../../../elements/buttons/SubmitButton";
 
 export default class TransferForm extends React.Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import {Col} from "react-bootstrap"
 import Navigation from "../sections/Navigation";
 import Menu from "../sections/Menu";
 import Wallets from "../sections/wallets/Wallets";
-import AddExpense from "../sections/add-expense/AddExpense";
+import AddExpense from "../sections/expenses/add-expense/AddExpense";
 import Server from "../../services/Server";
 import {browserHistory} from "react-router";
 import AddWallet from "../sections/wallets/AddWallet";

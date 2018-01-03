@@ -1,8 +1,8 @@
 import React from "react";
 import {browserHistory} from "react-router";
 
-import Button from "../../elements/buttons/Button";
-import Server from "../../../services/Server";
+import Button from "../../../elements/buttons/Button";
+import Server from "../../../../services/Server";
 import AddExpenseForm from "./AddExpenseForm";
 import TransferForm from "./TransferForm";
 
@@ -23,7 +23,9 @@ export default class AddExpense extends React.Component {
   createExpenseObjectFrom(form) {
     return {
       message: form.message.value,
-      amount: form.amount.value,
+      money: {
+        amount: form.amount.value
+      },
       category: {
         name: form.category.value,
         profit: form.profit.value
