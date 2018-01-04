@@ -6,6 +6,8 @@ import DateGenerator from "../../../util/DateGenerator";
 import Server from "../../../services/Server";
 import List from "../../elements/List";
 
+const R = require('ramda');
+
 export default class Categories extends React.Component {
   constructor(props) {
     super(props);
@@ -50,41 +52,36 @@ export default class Categories extends React.Component {
   }
 
   get categories() {
-    return Object.keys(this.state.categories).map((value, index) =>
+    const sortBySecondValue = R.sortWith([R.descend(R.prop(1))]);
+    const sorted = sortBySecondValue(Object.entries(this.state.categories));
+    const sum = Object.values(this.state.categories).reduce((a, b) => a + b, 0);
+    return sorted.map((entry, index) =>
       <div key = {index}>
         <Grid id = "grid">
           <Col
             className = "category-col"
             lg = {7} md = {7} sm = {7} xs = {7}>
             <span id = "category">
-              {value}
+              {entry[0]}
             </span>
           </Col>
           <Col
             className = "category-col"
             lg = {3} md = {3} sm = {3} xs = {3}>
             <span id = "amount">
-              {this.state.categories[value]}
+              {entry[1]}
             </span>
           </Col>
           <Col
             className = "category-col"
             lg = {2} md = {2} sm = {2} xs = {2}>
             <span id = "percentage">
-              ({(this.state.categories[value] * 100 / this.sum).toFixed(0)}%)
+              ({(entry[1] * 100 / sum).toFixed(0)}%)
             </span>
           </Col>
         </Grid>
         </div>
     );
-  }
-
-  get sum() {
-    let sum = 0;
-    Object
-      .keys(this.state.categories)
-      .forEach((value, index) => sum += this.state.categories[value]);
-    return sum;
   }
 
   render() {
