@@ -6,7 +6,7 @@ import Moment from "moment";
 export default class BudgetElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {exceeded: this.props.budget.current > this.props.budget.total}
+    this.state = {exceeded: this.props.budget.current.amount > this.props.budget.total.amount}
   }
 
   componentWillReceiveProps(props) {
@@ -16,7 +16,7 @@ export default class BudgetElement extends React.Component {
   }
 
   update(props) {
-    this.setState({exceeded: props.budget.current > props.budget.total});
+    this.setState({exceeded: props.budget.current.amount > props.budget.total.amount});
   }
 
   budgetChanged(budget) {
@@ -30,7 +30,7 @@ export default class BudgetElement extends React.Component {
   }
 
   get percentage() {
-    return (this.props.budget.current * 100) / this.props.budget.total;
+    return (this.props.budget.current.amount * 100) / this.props.budget.total.amount;
   }
 
   get color() {
@@ -52,7 +52,7 @@ export default class BudgetElement extends React.Component {
   }
 
   get amountLeft() {
-    let difference = this.props.budget.total - this.props.budget.current;
+    let difference = this.props.budget.total.amount - this.props.budget.current.amount;
     let amount = this.state.exceeded ? -difference : difference;
     return amount.toFixed(2);
   }

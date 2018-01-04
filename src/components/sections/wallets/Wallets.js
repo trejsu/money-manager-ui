@@ -70,7 +70,7 @@ export default class Wallet extends React.Component {
         </Col>
         <Col className = "wallet-col" lg = {6} md = {6} sm = {12} xs = {6}>
            <div id = "amount">
-            {wallet.amount.toFixed(2)}
+            {wallet.money.amount.toFixed(2)}
           </div>
         </Col>
       </div>
