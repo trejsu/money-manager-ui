@@ -1,7 +1,8 @@
 import React from "react";
 import Moment from "moment";
+import PropTypes from "prop-types";
 
-import List from "../elements/List";
+import ClickableList from "../elements/ClickableList";
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class Tabs extends React.Component {
         className = "main-container"
         id = "tabs">
         <div className = "horizontal-list">
-          <List
+          <ClickableList
             elements = {this.tabs}
             onClick = {this.props.onTabSelected}
             selectedItem = {this.props.selected} />
@@ -33,3 +34,8 @@ export default class Tabs extends React.Component {
     );
   }
 }
+
+Tabs.propTypes = {
+  onTabSelected: PropTypes.func,
+  selected: PropTypes.number
+};

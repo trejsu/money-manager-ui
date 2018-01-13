@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router";
 import PropTypes from "prop-types";
 
-import List from "../elements/List";
+import ClickableList from "../elements/ClickableList";
 
 export default class Menu extends React.Component {
   constructor(props) {
@@ -78,7 +78,7 @@ export default class Menu extends React.Component {
           MENU
         </div>
         <hr />
-        <List
+        <ClickableList
           elements = {this.menuLinks}
           onClick = {this.onItemSelected.bind(this)}
           selectedItem = {this.state.selectedItem}

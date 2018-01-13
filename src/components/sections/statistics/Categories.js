@@ -4,7 +4,7 @@ import {Col, Grid} from "react-bootstrap";
 
 import DateGenerator from "../../../util/DateGenerator";
 import Server from "../../../services/Server";
-import List from "../../elements/List";
+import ClickableList from "../../elements/ClickableList";
 
 const R = require('ramda');
 
@@ -90,7 +90,7 @@ export default class Categories extends React.Component {
         <div className = "title">
           Wydatki według kategorii
         </div>
-        {!!this.state.categories ? <List elements = {this.categories} /> : ""}
+        {!!this.state.categories ? <ClickableList elements = {this.categories} /> : ""}
       </div>
     );
   }
