@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default class List extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class List extends React.Component {
     return this.props.elements.map((element, index) =>
         <li
           key = {index}
-          onClick = {(event) => this.props.onClick(index)}
+          onClick = {() => this.props.onClick(index)}
           className = {(this.props.selectedItem === index) ? "selected" : ""}>
           {element}
         </li>
@@ -24,3 +25,9 @@ export default class List extends React.Component {
     );
   }
 }
+
+List.propTypes = {
+  elements: PropTypes.array,
+  onClick: PropTypes.func,
+  selectedItem: PropTypes.number
+};

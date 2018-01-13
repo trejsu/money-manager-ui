@@ -20,7 +20,7 @@ export default class Server {
   }
 
   deleteExpenseFromWallet(walletId, expenseId) {
-    return this.server.delete(`resources/users/${this.login}/wallets/${walletId}"/expenses/${expenseId}`, this.config);
+    return this.server.delete(`resources/users/${this.login}/wallets/${walletId}/expenses/${expenseId}`, this.config);
   }
 
   getCategories() {
