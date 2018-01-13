@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Summary from "./Summary";
 import Tabs from "../Tabs";
 import ExpensesList from "./ExpensesList";
+
 export default class Expenses extends React.Component {
   constructor(props) {
     super(props);
@@ -31,8 +33,18 @@ export default class Expenses extends React.Component {
           walletID = {this.props.walletID}
           addExpenseHidden = {this.props.addExpenseHidden}
           addWalletHidden = {this.props.addWalletHidden}
-          login = {this.props.login} />
+          login = {this.props.login}
+          emitter = {this.props.emitter}/>
       </div>
     );
   }
 }
+
+Expenses.propTypes = {
+  walletID: PropTypes.number,
+  addExpenseHidden: PropTypes.bool,
+  addWalletHidden: PropTypes.bool,
+  login: PropTypes.string,
+  onAddExpense: PropTypes.func,
+  emitter: PropTypes.object
+};

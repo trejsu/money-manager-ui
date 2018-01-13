@@ -1,8 +1,9 @@
 import React from "react";
 import {Col, Grid} from "react-bootstrap";
 import Moment from "moment";
+import PropTypes from "prop-types";
 
-export default class Date extends React.Component {
+class Date extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -21,19 +22,12 @@ export default class Date extends React.Component {
 
   render() {
     return (
-      <div
-        className = "date"
-        id = {this.props.profit ? "inflow" : "outflow"}>
-        <Grid id = "grid">
-        <Col
-          className = "col"
-          id = "day"
-          xs = {2} sm = {2} md = {2} lg = {2} >
+      <div className="date" id={this.props.profit ? "inflow" : "outflow"}>
+        <Grid id="grid">
+        <Col className="col" id="day" xs={2} sm={2} md={2} lg={2}>
           {this.date.format('D')}
         </Col>
-        <Col
-          className = "col"
-          xs = {10} sm = {10} md = {10} lg = {10} >
+        <Col className="col" xs={8} sm={8} md={8} lg={8}>
           <div>
             {this.date.format('MMMM YYYY')}
           </div>
@@ -41,8 +35,21 @@ export default class Date extends React.Component {
             {this.moment}
           </div>
         </Col>
+        <Col className="col" id="remove" xs={2} sm={2} md={2} lg={2}>
+          <div onClick={this.props.onDelete}>
+            X
+          </div>
+        </Col>
         </Grid>
       </div>
     );
   }
 }
+
+Date.propTypes = {
+  time: PropTypes.string,
+  profit: PropTypes.bool,
+  onDelete: PropTypes.func
+};
+
+export default Date;

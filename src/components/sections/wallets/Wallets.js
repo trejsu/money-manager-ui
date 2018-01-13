@@ -1,8 +1,9 @@
 import React from "react";
 import {browserHistory} from "react-router";
 import {Col} from "react-bootstrap";
+import PropTypes from "prop-types";
 
-import List from "../../elements/List";
+import ClickableList from "../../elements/ClickableList";
 import Button from "../../elements/buttons/Button";
 
 import Server from "../../../services/Server";
@@ -13,11 +14,12 @@ export default class Wallet extends React.Component {
     this.state = {
       wallets: [],
       selectedWallet: 0
-    }
+    };
   }
 
   componentDidMount() {
     this.update(this.props);
+    this.props.emitter.on("expense-delete", () => this.update(this.props))
   }
 
   componentWillReceiveProps(newProps) {
@@ -33,7 +35,7 @@ export default class Wallet extends React.Component {
   }
 
   update(props) {
-    if (!!props.login) {
+    if (props.login) {
       new Server(props.login)
         .getWallets()
         .then(response => {
@@ -99,7 +101,7 @@ export default class Wallet extends React.Component {
           PORTFELE
         </div>
         <hr />
-        <List
+        <ClickableList
           elements = {this.wallets}
           onClick = {this.onItemSelected.bind(this)}
           selectedItem = {this.state.selectedWallet}
@@ -111,3 +113,11 @@ export default class Wallet extends React.Component {
     );
   }
 }
+
+Wallet.propTypes = {
+  onAdd: PropTypes.func,
+  login: PropTypes.string,
+  addExpenseHidden: PropTypes.bool,
+  addWalletHidden: PropTypes.bool,
+  emitter: PropTypes.object
+};

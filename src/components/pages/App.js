@@ -1,5 +1,6 @@
 import React from "react";
 import {Col} from "react-bootstrap"
+import MicroEmitter from "micro-emitter";
 
 import Navigation from "../sections/Navigation";
 import Menu from "../sections/Menu";
@@ -21,6 +22,7 @@ export default class App extends React.Component {
       user: {}
     };
     this.server = new Server();
+    this.emitter = new MicroEmitter();
   }
 
   componentDidMount() {
@@ -132,7 +134,8 @@ export default class App extends React.Component {
           addExpenseHidden: this.state.addExpenseHidden,
           addWalletHidden: this.state.addWalletHidden,
           addBudgetHidden: this.state.addBudgetHidden,
-          login: this.state.user.login
+          login: this.state.user.login,
+          emitter: this.emitter
         }));
   }
 
@@ -154,7 +157,8 @@ export default class App extends React.Component {
             addExpenseHidden = {this.state.addExpenseHidden}
             addWalletHidden = {this.state.addWalletHidden}
             login = {this.state.user.login}
-            onAdd = {this.onAddWalletFromListButtonClick.bind(this)} />
+            onAdd = {this.onAddWalletFromListButtonClick.bind(this)}
+            emitter = {this.emitter} />
         </Col>
         <Col xs = {12} sm = {5} smPull = {3} md = {5} mdPull = {3} lg = {5} lgPull = {3}>
           {this.children}

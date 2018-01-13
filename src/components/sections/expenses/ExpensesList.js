@@ -1,6 +1,7 @@
 import React from "react";
 import {browserHistory} from "react-router";
-const R = require('ramda');
+import { sortWith, descend, prop } from 'ramda'
+import PropTypes from "prop-types";
 
 import Server from "../../../services/Server";
 import Button from "../../elements/buttons/Button";
@@ -19,7 +20,7 @@ export default class ExpensesList extends React.Component {
       elements: [],
       isLoading: false,
       items: []
-    }
+    };
   }
 
   componentDidMount() {
@@ -45,10 +46,10 @@ export default class ExpensesList extends React.Component {
   }
 
   updateData(props) {
-    if (!!props.login) {
+    if (props.login) {
       let period = this.dateGenerator.getDate(props.selected);
       this.updateState(
-        () => new Server(props.login).getExpensesForWalletAndTimePeriod(
+        () =>  new Server(props.login).getExpensesForWalletAndTimePeriod(
           props.walletID,
           period.start,
           period.end
@@ -60,7 +61,7 @@ export default class ExpensesList extends React.Component {
   updateState(getExpenses) {
     getExpenses()
       .then(response => {
-        const sortByDate = R.sortWith([R.descend(R.prop('id'))]);
+        const sortByDate = sortWith([descend(prop('id'))]);
         const sorted = sortByDate(response.data);
         this.setState({
           elements: sorted,
@@ -78,7 +79,7 @@ export default class ExpensesList extends React.Component {
 
   get elements() {
     return this.state.items.map(element =>
-      <ExpenseElement expense = {element} />
+      <ExpenseElement expense = {element} onDelete = {this.onDelete.bind(this)} />
     );
   }
 
@@ -108,6 +109,16 @@ export default class ExpensesList extends React.Component {
     this.props.onAdd();
   }
 
+  // todo: check what happens on error
+  onDelete(id) {
+    new Server(this.props.login)
+      .deleteExpenseFromWallet(this.props.walletID, id)
+      .then(() => {
+        this.updateData(this.props);
+        this.props.emitter.emit("expense-delete");
+      });
+  }
+
   render() {
     return (
       <div>
@@ -118,10 +129,20 @@ export default class ExpensesList extends React.Component {
           disabled = {this.props.walletID === 0} />
         <ContinuousScrollingList
           elements = {this.elements}
-          selected = {this.props.selected}
           onEnter = {this.loadMoreElements.bind(this)}
           isLoading = {this.state.isLoading} />
       </div>
     );
   }
 }
+
+ExpensesList.propTypes = {
+  onAdd: PropTypes.func,
+  emitter: PropTypes.object,
+  login: PropTypes.string,
+  selected: PropTypes.number,
+  walletID: PropTypes.number,
+  addExpenseHidden: PropTypes.bool,
+  addWalletHidden: PropTypes.bool
+};
+
