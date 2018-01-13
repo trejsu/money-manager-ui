@@ -8,13 +8,8 @@ export default class List extends React.Component {
 
   get listElements() {
     return this.props.elements.map((element, index) =>
-        <li
-          key = {index}
-          onClick = {() => this.props.onClick(index)}
-          className = {(this.props.selectedItem === index) ? "selected" : ""}>
-          {element}
-        </li>
-    );
+      <li key = {index}> {element} </li>
+    )
   }
 
   render() {
@@ -27,7 +22,5 @@ export default class List extends React.Component {
 }
 
 List.propTypes = {
-  elements: PropTypes.array,
-  onClick: PropTypes.func,
-  selectedItem: PropTypes.number
+  elements: PropTypes.array
 };
