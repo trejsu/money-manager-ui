@@ -8,25 +8,19 @@ export default class Server {
   }
 
   getSummaryForWalletAndTimePeriod(id, start, end) {
-    return this.server.get(
-      "resources/users/" + this.login + "/wallets/" + id + "/summary?start=" + start + "&end=" + end,
-      this.config
-    );
+    return this.server.get(`resources/users/${this.login}/wallets/${id}/summary?start=${start}&end=${end}`, this.config);
   }
 
   getExpensesForWalletAndTimePeriod(id, start, end) {
-    return this.server.get(
-      "resources/users/" + this.login + "/wallets/" + id + "/expenses?start=" + start + "&end=" + end,
-      this.config
-    );
+    return this.server.get(`resources/users/${this.login}/wallets/${id}/expenses?start=${start}&end=${end}`, this.config);
   }
 
   addExpenseToWallet(id, expense) {
-    return this.server.post(
-      "resources/users/" + this.login + "/wallets/" + id + "/expenses",
-      expense,
-      this.config
-    );
+    return this.server.post(`resources/users/${this.login}/wallets/${id}/expenses`, expense, this.config);
+  }
+
+  deleteExpenseFromWallet(walletId, expenseId) {
+    return this.server.delete(`resources/users/${this.login}/wallets/${walletId}"/expenses/${expenseId}`, this.config);
   }
 
   getCategories() {
@@ -34,15 +28,15 @@ export default class Server {
   }
 
   getWallets() {
-    return this.server.get("resources/users/" + this.login + "/wallets", this.config);
+    return this.server.get(`resources/users/${this.login}/wallets`, this.config);
   }
 
   addWallet(wallet) {
-    return this.server.post("resources/users/" + this.login + "/wallets", wallet, this.config);
+    return this.server.post(`resources/users/${this.login}/wallets`, wallet, this.config);
   }
 
   getBudgets() {
-    return this.server.get("resources/users/" + this.login + "/budgets", this.config);
+    return this.server.get(`resources/users/${this.login}/budgets`, this.config);
   }
 
   logout() {
@@ -78,38 +72,24 @@ export default class Server {
   }
 
   updateAdminStatus(login, admin) {
-    return this.server.put("resources/users/" + login + "?field=admin", {admin: admin}, this.config);
+    return this.server.put(`resources/users/${login}?field=admin`, {admin}, this.config);
   }
 
   addBudget(budget) {
-    return this.server.post("resources/users/" + this.login + "/budgets", budget, this.config)
+    return this.server.post(`resources/users/${this.login}/budgets`, budget, this.config)
   }
 
   getBudgetsForTimePeriod(period) {
-    return this.server.get(
-      "resources/users/"
-      + this.login
-      + "/budgets?start_min="
-      + period.startMin
-      + "&start_max="
-      + period.startMax
-      + "&end_min="
-      + period.endMin
-      + "&end_max="
-      + period.endMax,
-      this.config
-    );
+    return this.server.get(`resources/users/${this.login}/budgets
+    ?start_min=${period.startMin}&start_max=${period.startMax}&end_min=${period.endMin}&end_max=${period.endMax}`,
+      this.config);
   }
 
   getHighestExpenseForWalletAndTimePeriod(walletID, start, end) {
-    return this.server.get(
-      "resources/users/" + this.login + "/wallets/" + walletID + "/highest_expense?start=" + start + "&end=" + end, this.config
-    );
+    return this.server.get(`resources/users/${this.login}/wallets/${walletID}/highest_expense?start=${start}&end=${end}`, this.config);
   }
 
   getCountedCategoriesForWalletAndTimePeriod(walletID, start, end) {
-    return this.server.get(
-      "resources/users/" + this.login + "/wallets/" + walletID + "/counted_categories?start=" + start + "&end=" + end, this.config
-    );
+    return this.server.get(`resources/users/${this.login}/wallets/${walletID}/counted_categories?start=${start}&end=${end}`, this.config);
   }
 }
