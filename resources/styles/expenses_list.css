@@ -65,6 +65,10 @@
     opacity: 0.5;
 }
 
+.date #delete {
+    cursor: pointer;
+}
+
 #amount {
     float: right;
 }
