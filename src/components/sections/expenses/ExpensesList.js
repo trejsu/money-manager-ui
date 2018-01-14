@@ -111,10 +111,9 @@ export default class ExpensesList extends React.Component {
     this.props.emitter.emit("expense-add");
   }
 
-  // todo: check what happens on error
   onDelete(id) {
     new Server(this.props.login)
-      .deleteExpenseFromWallet(this.state.walletID, id)
+      .deleteExpenseFromWallet(this.state.walletId, id)
       .then(() => {
         this.updateData(this.props);
         this.props.emitter.emit("expense-delete");

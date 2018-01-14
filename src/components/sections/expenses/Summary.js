@@ -20,6 +20,7 @@ export default class Summary extends React.Component {
   componentDidMount() {
     this.updateData(this.props);
     this.props.emitter.on("popup-expense-add", () => this.updateData(this.props));
+    this.props.emitter.on("expense-delete", () => this.updateData(this.props));
     this.props.emitter.on("popup-wallet-add", () => this.updateData(this.props));
     this.props.emitter.on("wallet-change",
       (walletId) => this.setState({walletId: walletId},
