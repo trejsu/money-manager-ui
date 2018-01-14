@@ -24,8 +24,10 @@ export default class AddBudget extends React.Component {
         name: form.category.value,
         profit: false
       },
-      total: form.amount.value,
-      timePeriod: {
+      total: {
+        amount: form.amount.value
+      },
+      dateRange: {
         start: form.start.value,
         end: form.end.value
       }

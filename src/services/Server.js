@@ -80,8 +80,7 @@ export default class Server {
   }
 
   getBudgetsForTimePeriod(period) {
-    return this.server.get(`resources/users/${this.login}/budgets
-    ?start_min=${period.startMin}&start_max=${period.startMax}&end_min=${period.endMin}&end_max=${period.endMax}`,
+    return this.server.get(`resources/users/${this.login}/budgets?start_min=${period.startMin}&start_max=${period.startMax}&end_min=${period.endMin}&end_max=${period.endMax}`,
       this.config);
   }
 
