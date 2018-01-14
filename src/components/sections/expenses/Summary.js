@@ -17,6 +17,7 @@ export default class Summary extends React.Component {
 
   componentDidMount() {
     this.updateData(this.props);
+    this.props.emitter.on("popup-expense-add", () => this.updateData(this.props))
   }
 
   componentWillReceiveProps(nextProps) {

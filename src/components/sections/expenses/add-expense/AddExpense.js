@@ -9,7 +9,14 @@ import TransferForm from "./TransferForm";
 export default class AddExpense extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {addExpense: true};
+    this.state = {
+      addExpense: true,
+      hidden: true
+    };
+  }
+
+  componentDidMount() {
+    this.props.emitter.on("expense-add", () => this.showPopup())
   }
 
   onSubmit(event) {
@@ -43,7 +50,7 @@ export default class AddExpense extends React.Component {
   add(expense) {
     new Server(this.props.login)
       .addExpenseToWallet(this.props.walletID, expense)
-      .then(response => this.props.onAdd())
+      .then(response => this.onAdd())
       .catch(error => {
         if (error.response.status === 500) {
           browserHistory.replace("/server_error");
@@ -113,17 +120,50 @@ export default class AddExpense extends React.Component {
       });
   }
 
+  showPopup() {
+    this.setState({hidden: false});
+    this.disableScroll();
+  }
+
+  disableScroll() {
+    if (this.isScrollBarPresent()) {
+      document.body.style.overflowY = "hidden";
+    }
+  }
+
+  isScrollBarPresent() {
+    let root = (document.compatMode === 'BackCompat') ?
+      document.body : document.documentElement;
+    return root.scrollHeight > root.clientHeight;
+  }
+
+  onClose() {
+    this.setState({hidden: true});
+    this.enableScroll();
+  }
+
+  enableScroll() {
+    if (document.body.style.overflowY === "hidden") {
+      document.body.style.overflowY = "scroll";
+    }
+  }
+
+  onAdd() {
+    this.props.emitter.emit("popup-expense-add");
+    this.onClose();
+  }
+
   render() {
     return (
       <div
         id = "add-expense-popup"
-        className = {this.props.addExpenseHidden ? "hidden" : ""}>
+        className = {this.state.hidden ? "hidden" : ""}>
         <div
           className = "main-container"
           id = "add-expense">
           <Button
             title = "x"
-            onClick = {this.props.onClose}
+            onClick = {this.onClose.bind(this)}
             class = "x-button"/>
           <Button
             title = {this.state.addExpense ? "transfer między portfelami" : "dodaj wydatek"}

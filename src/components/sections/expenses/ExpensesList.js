@@ -25,6 +25,7 @@ export default class ExpensesList extends React.Component {
 
   componentDidMount() {
     this.updateData(this.props);
+    this.props.emitter.on("popup-expense-add", () => this.updateData(this.props))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,7 +42,6 @@ export default class ExpensesList extends React.Component {
     return ((this.props.selected !== nextProps.selected)
             || (this.props.walletID !== nextProps.walletID)
             || (this.props.login !== nextProps.login)
-            || (this.props.addExpenseHidden !== nextProps.addExpenseHidden)
             || (this.props.addWalletHidden !== nextProps.addWalletHidden));
   }
 
@@ -106,7 +106,7 @@ export default class ExpensesList extends React.Component {
   }
 
   onAdd() {
-    this.props.onAdd();
+    this.props.emitter.emit("expense-add");
   }
 
   // todo: check what happens on error

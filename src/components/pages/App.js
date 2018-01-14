@@ -41,10 +41,6 @@ export default class App extends React.Component {
       });
   }
 
-  onAddExpensePopupClose() {
-    this.hideAddExpensePopup();
-  }
-
   onAddWalletPopupClose() {
     this.hideAddWalletPopup();
   }
@@ -58,21 +54,12 @@ export default class App extends React.Component {
     this.enableScroll();
   }
 
-  onAddExpenseFromPopupButtonClick() {
-    this.hideAddExpensePopup();
-  }
-
   onAddWalletFromPopupButtonClick() {
     this.hideAddWalletPopup();
   }
 
   onAddBudgetFromPopupButtonClick() {
     this.hideAddBudgetPopup();
-  }
-
-  hideAddExpensePopup() {
-    this.setState({addExpenseHidden: true});
-    this.enableScroll();
   }
 
   hideAddWalletPopup() {
@@ -86,11 +73,6 @@ export default class App extends React.Component {
     }
   }
 
-  showAddExpensePopup() {
-    this.setState({addExpenseHidden: false});
-    this.disableScroll();
-  }
-
   showAddWalletPopup() {
     this.setState({addWalletHidden: false});
     this.disableScroll();
@@ -100,10 +82,6 @@ export default class App extends React.Component {
     if (this.isScrollBarPresent()) {
       document.body.style.overflowY = "hidden";
     }
-  }
-
-  onAddExpenseFromListButtonClick() {
-    this.showAddExpensePopup();
   }
 
   onAddWalletFromListButtonClick() {
@@ -128,7 +106,6 @@ export default class App extends React.Component {
   get children() {
     return React.Children.map(this.props.children, child =>
         React.cloneElement(child, {
-          onAddExpense: this.onAddExpenseFromListButtonClick.bind(this),
           onAddBudget: this.onAddBudgetListButtonClick.bind(this),
           walletID: this.state.walletID,
           addExpenseHidden: this.state.addExpenseHidden,
@@ -154,7 +131,6 @@ export default class App extends React.Component {
           xs = {12} sm = {3} smPush = {5} md = {3} mdPush = {5} lg = {3} lgPush = {5}>
           <Wallets
             onChange = {this.onWalletChange.bind(this)}
-            addExpenseHidden = {this.state.addExpenseHidden}
             addWalletHidden = {this.state.addWalletHidden}
             login = {this.state.user.login}
             onAdd = {this.onAddWalletFromListButtonClick.bind(this)}
@@ -164,11 +140,9 @@ export default class App extends React.Component {
           {this.children}
         </Col>
         <AddExpense
-          addExpenseHidden = {this.state.addExpenseHidden}
-          onAdd = {this.onAddExpenseFromPopupButtonClick.bind(this)}
-          onClose = {this.onAddExpensePopupClose.bind(this)}
           walletID = {this.state.walletID}
-          login = {this.state.user.login} />
+          login = {this.state.user.login}
+          emitter = {this.emitter}/>
         <AddWallet
           addWalletHidden = {this.state.addWalletHidden}
           onAdd = {this.onAddWalletFromPopupButtonClick.bind(this)}

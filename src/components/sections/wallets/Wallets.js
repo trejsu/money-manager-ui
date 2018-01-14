@@ -19,7 +19,8 @@ export default class Wallet extends React.Component {
 
   componentDidMount() {
     this.update(this.props);
-    this.props.emitter.on("expense-delete", () => this.update(this.props))
+    this.props.emitter.on("expense-delete", () => this.update(this.props));
+    this.props.emitter.on("popup-expense-add", () => this.update(this.props))
   }
 
   componentWillReceiveProps(newProps) {
@@ -30,7 +31,6 @@ export default class Wallet extends React.Component {
 
   propsChanged(newProps) {
     return this.props.login !== newProps.login
-      || this.props.addExpenseHidden !== newProps.addExpenseHidden
       || this.props.addWalletHidden !== newProps.addWalletHidden;
   }
 

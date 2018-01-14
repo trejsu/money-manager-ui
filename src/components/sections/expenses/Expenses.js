@@ -24,12 +24,11 @@ export default class Expenses extends React.Component {
         <Summary
           selected = {this.state.selectedTab}
           walletID = {this.props.walletID}
-          addExpenseHidden = {this.props.addExpenseHidden}
+          emitter = {this.props.emitter}
           addWalletHidden = {this.props.addWalletHidden}
           login = {this.props.login} />
         <ExpensesList
           selected = {this.state.selectedTab}
-          onAdd = {this.props.onAddExpense}
           walletID = {this.props.walletID}
           addExpenseHidden = {this.props.addExpenseHidden}
           addWalletHidden = {this.props.addWalletHidden}
