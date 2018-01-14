@@ -22,12 +22,12 @@ class Date extends React.Component {
 
   render() {
     return (
-      <div className="date" id={this.props.profit ? "inflow" : "outflow"}>
-        <Grid id="grid">
-        <Col className="col" id="day" xs={2} sm={2} md={2} lg={2}>
+      <div className = "date" id = {this.props.profit ? "inflow" : "outflow"}>
+        <Grid id = "grid">
+        <Col className = "col" id = "day" xs = {2} sm = {2} md = {2} lg = {2}>
           {this.date.format('D')}
         </Col>
-        <Col className="col" xs={8} sm={8} md={8} lg={8}>
+        <Col className = "col" xs = {8} sm = {8} md = {8} lg = {8}>
           <div>
             {this.date.format('MMMM YYYY')}
           </div>
@@ -35,8 +35,8 @@ class Date extends React.Component {
             {this.moment}
           </div>
         </Col>
-        <Col className="col" id="remove" xs={2} sm={2} md={2} lg={2}>
-          <div onClick={this.props.onDelete}>
+        <Col className = "col" id = "remove" xs = {2} sm = {2} md = {2} lg = {2}>
+          <div id = "delete" onClick = {this.props.onDelete}>
             X
           </div>
         </Col>

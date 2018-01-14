@@ -20,7 +20,8 @@ export default class Wallet extends React.Component {
   componentDidMount() {
     this.update(this.props);
     this.props.emitter.on("expense-delete", () => this.update(this.props));
-    this.props.emitter.on("popup-expense-add", () => this.update(this.props))
+    this.props.emitter.on("popup-expense-add", () => this.update(this.props));
+    this.props.emitter.on("popup-wallet-add", () => this.update(this.props))
   }
 
   componentWillReceiveProps(newProps) {
@@ -30,8 +31,7 @@ export default class Wallet extends React.Component {
   }
 
   propsChanged(newProps) {
-    return this.props.login !== newProps.login
-      || this.props.addWalletHidden !== newProps.addWalletHidden;
+    return this.props.login !== newProps.login;
   }
 
   update(props) {
@@ -59,6 +59,7 @@ export default class Wallet extends React.Component {
     this.setState({wallets: newWallets});
     if (walletsLength !== 0 && newWallets.length > walletsLength) {
       this.setState({selectedWallet: walletsLength});
+      this.props.emitter.emit("wallet-change", this.state.wallets[walletsLength].id);
     }
   }
 
@@ -81,15 +82,11 @@ export default class Wallet extends React.Component {
 
   onItemSelected(index) {
     this.setState({selectedWallet: index});
-    this.onChange(this.props, this.state.wallets, index);
-  }
-
-  onChange(props, wallets, index) {
-    props.onChange(wallets[index].id);
+    this.props.emitter.emit("wallet-change", this.state.wallets[index].id);
   }
 
   onAdd() {
-    this.props.onAdd();
+    this.props.emitter.emit("wallet-add");
   }
 
   render() {

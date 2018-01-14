@@ -41,10 +41,6 @@ export default class App extends React.Component {
       });
   }
 
-  onAddWalletPopupClose() {
-    this.hideAddWalletPopup();
-  }
-
   onAddBudgetPopupClose() {
     this.hideAddBudgetPopup();
   }
@@ -54,17 +50,8 @@ export default class App extends React.Component {
     this.enableScroll();
   }
 
-  onAddWalletFromPopupButtonClick() {
-    this.hideAddWalletPopup();
-  }
-
   onAddBudgetFromPopupButtonClick() {
     this.hideAddBudgetPopup();
-  }
-
-  hideAddWalletPopup() {
-    this.setState({addWalletHidden: true});
-    this.enableScroll();
   }
 
   enableScroll() {
@@ -82,10 +69,6 @@ export default class App extends React.Component {
     if (this.isScrollBarPresent()) {
       document.body.style.overflowY = "hidden";
     }
-  }
-
-  onAddWalletFromListButtonClick() {
-    this.showAddWalletPopup();
   }
 
   isScrollBarPresent() {
@@ -107,17 +90,10 @@ export default class App extends React.Component {
     return React.Children.map(this.props.children, child =>
         React.cloneElement(child, {
           onAddBudget: this.onAddBudgetListButtonClick.bind(this),
-          walletID: this.state.walletID,
-          addExpenseHidden: this.state.addExpenseHidden,
-          addWalletHidden: this.state.addWalletHidden,
           addBudgetHidden: this.state.addBudgetHidden,
           login: this.state.user.login,
           emitter: this.emitter
         }));
-  }
-
-  onWalletChange(walletID) {
-    this.setState({walletID: walletID});
   }
 
   render() {
@@ -130,24 +106,18 @@ export default class App extends React.Component {
         <Col
           xs = {12} sm = {3} smPush = {5} md = {3} mdPush = {5} lg = {3} lgPush = {5}>
           <Wallets
-            onChange = {this.onWalletChange.bind(this)}
-            addWalletHidden = {this.state.addWalletHidden}
             login = {this.state.user.login}
-            onAdd = {this.onAddWalletFromListButtonClick.bind(this)}
             emitter = {this.emitter} />
         </Col>
         <Col xs = {12} sm = {5} smPull = {3} md = {5} mdPull = {3} lg = {5} lgPull = {3}>
           {this.children}
         </Col>
         <AddExpense
-          walletID = {this.state.walletID}
           login = {this.state.user.login}
           emitter = {this.emitter}/>
         <AddWallet
-          addWalletHidden = {this.state.addWalletHidden}
-          onAdd = {this.onAddWalletFromPopupButtonClick.bind(this)}
-          onClose = {this.onAddWalletPopupClose.bind(this)}
-          login = {this.state.user.login} />
+          login = {this.state.user.login}
+          emitter = {this.emitter}/>
         <AddBudget
           hidden = {this.state.addBudgetHidden}
           onClose = {this.onAddBudgetPopupClose.bind(this)}

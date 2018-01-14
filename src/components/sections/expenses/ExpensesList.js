@@ -19,13 +19,18 @@ export default class ExpensesList extends React.Component {
     this.state = {
       elements: [],
       isLoading: false,
-      items: []
+      items: [],
+      walletId: 0
     };
   }
 
   componentDidMount() {
     this.updateData(this.props);
-    this.props.emitter.on("popup-expense-add", () => this.updateData(this.props))
+    this.props.emitter.on("popup-expense-add", () => this.updateData(this.props));
+    this.props.emitter.on("popup-wallet-add", () => this.updateData(this.props));
+    this.props.emitter.on("wallet-change",
+      (walletId) => this.setState({walletId: walletId},
+        () => this.updateData(this.props)))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,10 +44,7 @@ export default class ExpensesList extends React.Component {
   }
 
   propsChanged(nextProps) {
-    return ((this.props.selected !== nextProps.selected)
-            || (this.props.walletID !== nextProps.walletID)
-            || (this.props.login !== nextProps.login)
-            || (this.props.addWalletHidden !== nextProps.addWalletHidden));
+    return this.props.selected !== nextProps.selected || this.props.login !== nextProps.login;
   }
 
   updateData(props) {
@@ -50,7 +52,7 @@ export default class ExpensesList extends React.Component {
       let period = this.dateGenerator.getDate(props.selected);
       this.updateState(
         () =>  new Server(props.login).getExpensesForWalletAndTimePeriod(
-          props.walletID,
+          this.state.walletId,
           period.start,
           period.end
         )
@@ -112,7 +114,7 @@ export default class ExpensesList extends React.Component {
   // todo: check what happens on error
   onDelete(id) {
     new Server(this.props.login)
-      .deleteExpenseFromWallet(this.props.walletID, id)
+      .deleteExpenseFromWallet(this.state.walletID, id)
       .then(() => {
         this.updateData(this.props);
         this.props.emitter.emit("expense-delete");
@@ -126,7 +128,7 @@ export default class ExpensesList extends React.Component {
           title = "dodaj wydatek"
           class = "green-button"
           onClick = {this.onAdd.bind(this)}
-          disabled = {this.props.walletID === 0} />
+          disabled = {this.state.walletID === 0} />
         <ContinuousScrollingList
           elements = {this.elements}
           onEnter = {this.loadMoreElements.bind(this)}
@@ -141,7 +143,6 @@ ExpensesList.propTypes = {
   emitter: PropTypes.object,
   login: PropTypes.string,
   selected: PropTypes.number,
-  walletID: PropTypes.number,
   addExpenseHidden: PropTypes.bool,
   addWalletHidden: PropTypes.bool
 };

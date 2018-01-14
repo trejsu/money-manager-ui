@@ -1,5 +1,6 @@
 import React from "react";
 import {browserHistory} from "react-router";
+import PropTypes from "prop-types";
 
 import Button from "../../../elements/buttons/Button";
 import Server from "../../../../services/Server";
@@ -11,12 +12,14 @@ export default class AddExpense extends React.Component {
     super(props);
     this.state = {
       addExpense: true,
-      hidden: true
+      hidden: true,
+      walletId: 0
     };
   }
 
   componentDidMount() {
-    this.props.emitter.on("expense-add", () => this.showPopup())
+    this.props.emitter.on("expense-add", () => this.showPopup());
+    this.props.emitter.on("wallet-change", (walletId) => this.setState({walletId: walletId}));
   }
 
   onSubmit(event) {
@@ -49,7 +52,7 @@ export default class AddExpense extends React.Component {
 
   add(expense) {
     new Server(this.props.login)
-      .addExpenseToWallet(this.props.walletID, expense)
+      .addExpenseToWallet(this.state.walletId, expense)
       .then(response => this.onAdd())
       .catch(error => {
         if (error.response.status === 500) {
@@ -110,7 +113,7 @@ export default class AddExpense extends React.Component {
   addProfit(profit, walletID) {
     new Server(this.props.login)
       .addExpenseToWallet(walletID, profit)
-      .then(response => this.props.onAdd())
+      .then(response => this.onAdd())
       .catch(error => {
         if (error.response.status === 500) {
           browserHistory.replace("/server_error");
@@ -127,7 +130,7 @@ export default class AddExpense extends React.Component {
 
   disableScroll() {
     if (this.isScrollBarPresent()) {
-      document.body.style.overflowY = "hidden";
+      this.overflowY = "hidden";
     }
   }
 
@@ -143,14 +146,22 @@ export default class AddExpense extends React.Component {
   }
 
   enableScroll() {
-    if (document.body.style.overflowY === "hidden") {
-      document.body.style.overflowY = "scroll";
+    if (this.overflowY === "hidden") {
+      this.overflowY = "scroll";
     }
   }
 
   onAdd() {
     this.props.emitter.emit("popup-expense-add");
     this.onClose();
+  }
+
+  get overflowY() {
+    return document.body.style.overflowY;
+  }
+
+  set overflowY(overflow) {
+    document.body.style.overflowY = overflow;
   }
 
   render() {
@@ -174,9 +185,14 @@ export default class AddExpense extends React.Component {
             <TransferForm
               onSubmit = {this.onTransferSubmit.bind(this)}
               login = {this.props.login}
-              selectedWallet = {this.props.walletID} />}
+              selectedWallet = {this.state.walletId} />}
         </div>
       </div>
     );
   }
 }
+
+AddExpense.propTypes = {
+  emitter: PropTypes.object,
+  login: PropTypes.string
+};
