@@ -3,7 +3,6 @@ import {browserHistory} from "react-router";
 
 import Server from "../../../../services/Server";
 import NumberInput from "../../../elements/inputs/NumberInput";
-import Radio from "../../../elements/inputs/Radio";
 import Select from "../../../elements/inputs/Select";
 import Text from "../../../elements/inputs/Text";
 import SubmitButton from "../../../elements/buttons/SubmitButton";

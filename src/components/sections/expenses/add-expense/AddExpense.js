@@ -84,14 +84,16 @@ export default class AddExpense extends React.Component {
 
   clearTransferForm(form) {
     form.message.value = "";
-    form.amount.value = "";
+    form.amount.value = ""
     form.wallet.value = "portfel";
   }
 
   createTransferExpense(form) {
     return {
       message: form.message.value,
-      amount: form.amount.value,
+      money: {
+        amount: form.amount.value
+      },
       category: {
         name: "transfer",
         profit: false
@@ -102,7 +104,9 @@ export default class AddExpense extends React.Component {
   createTransferProfit(form) {
     return {
       message: form.message.value,
-      amount: form.amount.value,
+      money: {
+        amount: form.amount.value
+      },
       category: {
         name: "transfer",
         profit: true
