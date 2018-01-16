@@ -127,7 +127,7 @@ export default class ExpensesList extends React.Component {
           title = "dodaj wydatek"
           class = "green-button"
           onClick = {this.onAdd.bind(this)}
-          disabled = {this.state.walletID === 0} />
+          disabled = {this.state.walletId === 0} />
         <ContinuousScrollingList
           elements = {this.elements}
           onEnter = {this.loadMoreElements.bind(this)}
