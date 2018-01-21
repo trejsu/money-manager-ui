@@ -27,7 +27,7 @@ export default class AddWallet extends React.Component {
   createWalletFromForm(form) {
     return {
       name: form.name.value,
-      money: {
+      amount: {
         amount: form.amount.value
       }
     };

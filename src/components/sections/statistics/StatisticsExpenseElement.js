@@ -48,7 +48,7 @@ export default class StatisticsExpenseElement extends React.Component {
             className = "col"
             xs = {2} sm = {2} md = {2} lg = {2} >
             <div id = "amount">
-              {this.props.expense.money.amount}
+              {this.props.expense.amount.amount}
             </div>
           </Col>
         </Grid>

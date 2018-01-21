@@ -42,9 +42,9 @@ export default class Statistics extends React.Component {
             walletID = {this.state.walletId}
             selected = {this.state.selectedTab} />
         </div>
-        <Chart
-          selected = {this.state.selectedTab}
-          walletID = {this.state.walletId} />
+        {/*<Chart*/}
+          {/*selected = {this.state.selectedTab}*/}
+          {/*walletID = {this.state.walletId} />*/}
       </div>
     );
   }

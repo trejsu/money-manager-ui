@@ -39,7 +39,7 @@ export default class ExpenseElement extends React.Component {
               </div>
             </Col>
             <Col className = "col" xs = {2} sm = {2} md = {2} lg = {2}>
-              {this.props.expense.money.amount}
+              {this.props.expense.amount.amount}
             </Col>
           </Row>
         </Grid>
