@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Grid} from "react-bootstrap";
+import {Col, Grid, Row} from "react-bootstrap";
 import Moment from "moment";
 import PropTypes from "prop-types";
 
@@ -24,22 +24,24 @@ class Date extends React.Component {
     return (
       <div className = "date" id = {this.props.profit ? "inflow" : "outflow"}>
         <Grid id = "grid">
-        <Col className = "col" id = "day" xs = {2} sm = {2} md = {2} lg = {2}>
-          {this.date.format('D')}
-        </Col>
-        <Col className = "col" xs = {8} sm = {8} md = {8} lg = {8}>
-          <div>
-            {this.date.format('MMMM YYYY')}
-          </div>
-          <div id = "moment">
-            {this.moment}
-          </div>
-        </Col>
-        <Col className = "col" id = "remove" xs = {2} sm = {2} md = {2} lg = {2}>
-          <div id = "delete" onClick = {this.props.onDelete}>
-            X
-          </div>
-        </Col>
+          <Row>
+            <Col className = "col" id = "day" xs = {2} sm = {2} md = {2} lg = {2}>
+              {this.date.format('D')}
+            </Col>
+            <Col className = "col" xs = {8} sm = {8} md = {8} lg = {8}>
+              <div>
+                {this.date.format('MMMM YYYY')}
+              </div>
+              <div id = "moment">
+                {this.moment}
+              </div>
+            </Col>
+            <Col className = "col" id = "remove" xs = {2} sm = {2} md = {2} lg = {2}>
+              <div id = "delete" onClick = {this.props.onDelete}>
+                <img src = "./resources/icons/delete.svg" />
+              </div>
+            </Col>
+          </Row>
         </Grid>
       </div>
     );

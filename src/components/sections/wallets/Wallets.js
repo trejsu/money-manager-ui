@@ -1,6 +1,6 @@
 import React from "react";
 import {browserHistory} from "react-router";
-import {Col} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 import ClickableList from "../../elements/ClickableList";
@@ -66,16 +66,18 @@ export default class Wallet extends React.Component {
   get wallets() {
     return this.state.wallets.map(wallet =>
       <div id = "wallet">
-        <Col className = "wallet-col" lg = {6} md = {6} sm = {12} xs = {6}>
-           <div id = "name">
-            {wallet.name}
-          </div>
-        </Col>
-        <Col className = "wallet-col" lg = {6} md = {6} sm = {12} xs = {6}>
-           <div id = "amount">
-            {wallet.amount.amount.toFixed(2)}
-          </div>
-        </Col>
+        <Row>
+          <Col className = "wallet-col" lg = {6} md = {6} sm = {12} xs = {6}>
+            <div id = "name">
+              {wallet.name}
+            </div>
+          </Col>
+          <Col className = "wallet-col" lg = {6} md = {6} sm = {12} xs = {6}>
+            <div id = "amount">
+              {wallet.amount.amount.toFixed(2)}
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }

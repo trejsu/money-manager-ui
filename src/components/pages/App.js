@@ -1,5 +1,5 @@
 import React from "react";
-import {Col} from "react-bootstrap"
+import {Col, Row} from "react-bootstrap"
 import MicroEmitter from "micro-emitter";
 
 import Navigation from "../sections/Navigation";
@@ -100,18 +100,19 @@ export default class App extends React.Component {
     return (
       <div>
         <Navigation name = {this.state.user.firstName + " " + this.state.user.lastName} />
-        <Col xs = {12} sm = {4} md = {4} lg = {4}>
-          <Menu />
-        </Col>
-        <Col
-          xs = {12} sm = {3} smPush = {5} md = {3} mdPush = {5} lg = {3} lgPush = {5}>
-          <Wallets
-            login = {this.state.user.login}
-            emitter = {this.emitter} />
-        </Col>
-        <Col xs = {12} sm = {5} smPull = {3} md = {5} mdPull = {3} lg = {5} lgPull = {3}>
-          {this.children}
-        </Col>
+        <Row>
+          <Col xs = {12} sm = {4} md = {4} lg = {4}>
+            <Menu />
+          </Col>
+          <Col xs = {12} sm = {5} smPull = {3} md = {5} mdPull = {3} lg = {5} lgPull = {3}>
+            {this.children}
+          </Col>
+          <Col xs = {12} sm = {3} smPush = {5} md = {3} mdPush = {5} lg = {3} lgPush = {5}>
+            <Wallets
+              login = {this.state.user.login}
+              emitter = {this.emitter} />
+          </Col>
+        </Row>
         <AddExpense
           login = {this.state.user.login}
           emitter = {this.emitter}/>
