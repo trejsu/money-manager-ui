@@ -48,7 +48,7 @@ export default class BudgetElement extends React.Component {
   }
 
   get daysLeft() {
-    return Moment(this.props.budget.dateRange.end, "YYYY-MM-DD").fromNow();
+    return Moment(this.props.budget.dateRange.end, "YYYY-MM-DD").add(1, 'days').fromNow();
   }
 
   get amountLeft() {
