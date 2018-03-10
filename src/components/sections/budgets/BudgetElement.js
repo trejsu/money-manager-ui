@@ -42,9 +42,9 @@ export default class BudgetElement extends React.Component {
 
   get period() {
     Moment.locale("pl");
-    return Moment(this.props.budget.dateRange.start).format("DD MMM")
+    return Moment(this.props.budget.dateRange.start).format("DD MMM YYYY")
       + " - "
-      + Moment(this.props.budget.dateRange.end).format("DD MMM");
+      + Moment(this.props.budget.dateRange.end).format("DD MMM YYYY");
   }
 
   get daysLeft() {
